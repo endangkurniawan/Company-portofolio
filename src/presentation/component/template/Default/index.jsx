@@ -1,3 +1,6 @@
+// style
+import style from "./style.module.scss";
+
 // --- component
 
 import Header from "presentation/component/organism/Header";
@@ -5,12 +8,12 @@ import Footer from "presentation/component/organism/Footer";
 
 // --- start default
 const Default = (props) => {
-  const { subscription = true, children } = props;
+  const { children } = props;
 
   return (
     <>
       <Header />
-      <div className="main">{children}</div>
+      <div className={style.default}>{children}</div>
       <Footer />
     </>
   );

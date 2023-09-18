@@ -1,0 +1,52 @@
+// --- style
+@import "core/style/_asset.scss";
+
+.header {
+  position: fixed;
+  z-index: zi(header);
+  width: 100%;
+  background-color: color(white);
+  padding: 56px 0;
+  @include large {
+    padding: 32px 0;
+  }
+  .wrapper {
+    @include clearfix;
+  }
+  .logo {
+    float: left;
+    img {
+      height: 40px;
+    }
+  }
+  .el {
+    height: 100%;
+  }
+  .burgerMenu {
+    display: none;
+  }
+  .menu {
+    float: right;
+  }
+  .nav {
+    padding: 6px 0;
+    margin-bottom: 0;
+    list-style: none;
+    font-size: 0;
+  }
+  .item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 40px;
+    color: color(black);
+    @include font-size(18);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .link {
+    text-decoration: none;
+    display: inline-block;
+    opacity: 0.5;
+  }
+}
