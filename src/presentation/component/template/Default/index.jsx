@@ -1,6 +1,3 @@
-// style
-import style from "./style.module.scss";
-
 // --- component
 
 import Header from "presentation/component/organism/Header";
@@ -13,7 +10,7 @@ const Default = (props) => {
   return (
     <>
       <Header />
-      <div className={style.default}>{children}</div>
+      <div className="main">{children}</div>
       <Footer />
     </>
   );

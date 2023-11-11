@@ -64,7 +64,7 @@ Quick Start (Open terminal)
 
 3. Remove Default Git
 
-- $ rm -rf .git
+- $ rm -rf .gitnone
 
 4. Running Projects
    $ npm start
