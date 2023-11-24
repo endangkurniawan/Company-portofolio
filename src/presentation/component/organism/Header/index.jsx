@@ -1,145 +1,62 @@
-// -- Link
+import React from "react";
 import { Link } from "react-router-dom";
-
-// Style
 import "./style.scss";
-
-// Icon
-import { AiOutlineArrowRight } from "react-icons/ai";
-
-// -- Logo
+import { AiOutlineArrowRight, AiOutlineDown } from "react-icons/ai";
 import Logo from "presentation/component/atom/Logo";
 import Button from "presentation/component/atom/Button";
 
 const Header = () => {
+  const dataDropdown = {
+    services: [
+      { text: "Hire Permanent Staff", link: "#" },
+      { text: "Staff Augmentation", link: "#" },
+      { text: "Software Outsourcing", link: "#" },
+      { text: "Build Remote Office", link: "#" },
+    ],
+    technologies: [
+      { text: "Frontend", link: "#" },
+      { text: "Backend", link: "#" },
+      { text: "Frameworks", link: "#" },
+      { text: "Mobile App", link: "#" },
+      { text: "Database", link: "#" },
+      { text: "Google", link: "#" },
+      { text: "Data Science", link: "#" },
+      { text: "Machine Learning", link: "#" },
+      { text: "DevOps", link: "#" },
+      { text: "CMS", link: "#" },
+      { text: "ECommerce", link: "#" },
+      { text: "Security", link: "#" },
+    ],
+  };
+
   return (
     <div className="header">
       <div className="container">
-        <div className="wrapper">
+        <div className="header__wrapper">
           <Link className="header__logo" to="/">
-            <Logo fileName="logo 1.png" name="Logo Trafalgar" clas="header__logo__el"></Logo>
+            <Logo fileName="logo 1.png" name="Logo Company" clas="header__logo__el" />
           </Link>
           <button className="burger-menu" type="button">
-            <span className="burger-menu__bar"></span>
-            <span className="burger-menu__bar"></span>
-            <span className="burger-menu__bar"></span>
+            <span className="burger-menu__bar" />
+            <span className="burger-menu__bar" />
+            <span className="burger-menu__bar" />
           </button>
           <div className="header__menu">
             <ul className="header__menu__list">
-              <li className="header__menu__item">
-                <Link className="link" to="#">
-                  How to Start
-                </Link>
-              </li>
-              <li className="header__menu__item">
-                <Link className="link" to="#">
-                  Services
-                  <ul className="menu__dropdown">
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Hire Permanent staff
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Staff Augmentation
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Software Outsourcing
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Build Remote Office
-                      </Link>
-                    </li>
-                  </ul>
-                </Link>
-              </li>
-              <li className="header__menu__item">
-                <Link className="link" to="#">
-                  Technologies
-                  <ul className="menu__dropdown">
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Frontend
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Backend
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Framework
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Mobile App
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Database
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Google
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Data Science
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Machine Learning
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Devops
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        CMS
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Ecommerse
-                      </Link>
-                    </li>
-                    <li className="menu_dropdown__item">
-                      <Link className="link" to="#">
-                        Security
-                      </Link>
-                    </li>
-                  </ul>
-                </Link>
-              </li>
-              <li className="header__menu__item">
-                <Link className="link" to="#">
-                  Careers
-                </Link>
-              </li>
+              <NavItem to="#" text="How to Start" />
+              <DropdownItem text="Services" items={dataDropdown.services} />
+              <DropdownItem text="Technologies" items={dataDropdown.technologies} />
+              <NavItem to="#" text="Careers" />
             </ul>
           </div>
           <div className="header__nav">
-            <Button variant="header__nav__button btn--secondary" type="button">
+            <Button variant="btn btn--secondary" type="button">
               BUILD A TEAM
               <span className="header__nav__arrow">
                 <AiOutlineArrowRight />
               </span>
             </Button>
-            <Link className="header__nav__link" to="#">
+            <Link className="link" to="#">
               Contact us
             </Link>
           </div>
@@ -148,5 +65,29 @@ const Header = () => {
     </div>
   );
 };
+
+const NavItem = ({ to, text }) => (
+  <li className="header__menu__item">
+    <Link className="link" to={to}>
+      {text}
+    </Link>
+  </li>
+);
+
+const DropdownItem = ({ text, items }) => (
+  <li className="header__menu__item">
+    <Link className="link" to="#">
+      {text}
+      <span>
+        <AiOutlineDown />
+      </span>
+    </Link>
+    <ul className="header__menu__list">
+      {items.map((item, idx) => (
+        <NavItem key={`md-${idx}`} to={item.link} text={item.text} />
+      ))}
+    </ul>
+  </li>
+);
 
 export default Header;

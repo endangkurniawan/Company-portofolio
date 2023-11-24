@@ -1,8 +1,9 @@
+import "./style.scss";
+
 const Button = (props) => {
   const { variant, link, children } = props;
 
-  const classNames =
-    variant !== undefined ? `btn btn--${variant}` : "btn btn--primary";
+  const classNames = variant !== undefined ? `btn btn--${variant}` : "btn btn--primary";
 
   if (link) {
     return (
